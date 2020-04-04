@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -e
+set -x
+set -u
+
+source credentials.conf
+source settings.conf
+
+confluence_page_title="$1"
+input_markdown_path="$2"
+tmp_html_path=`tempfile -s .html`
+
+echo "md($input_markdown_path) -> html($tmp_html_path)..."
+pandoc -f markdown -t html "$input_markdown_path" -o "$tmp_html_path"
+
+./html_to_confluence "$confluence_page_title" "$tmp_html_path"
