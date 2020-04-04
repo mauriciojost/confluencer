@@ -4,6 +4,8 @@ Transform documentation into confluence pages.
 
 ## Get started
 
+You will need to install `pandoc` tool.
+
 Set up your account in `credentials.conf` and server settings in `settings.conf`.
 
 Then execute:
