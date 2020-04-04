@@ -4,7 +4,6 @@ set -e
 set -x
 set -u
 
-source credentials.conf
 source settings.conf
 
 confluence_page_title="$1"
@@ -15,7 +14,7 @@ echo "html($input_html_path) -> json($tmp_json_path)..."
 python html_to_confluence_json.py "$confluence_space" "$input_html_path" "$confluence_page_title" "$confluence_page_ancestor" > "$tmp_json_path"
 
 echo "Publishing json($tmp_json_path)..."
-curl -v -u "$confluence_user:$confluence_pass" -X POST -H 'Content-Type: application/json' --data-binary "@$tmp_json_path" "$confluence_url"
+curl -v -u "$confluence_user" -X POST -H 'Content-Type: application/json' --data-binary "@$tmp_json_path" "$confluence_url"
 
 echo "Done."
 
