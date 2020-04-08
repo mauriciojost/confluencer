@@ -4,9 +4,6 @@ set -e
 #set -x
 set -u
 
-source credentials.conf
-source settings.conf
-
 confluence_page_title="$1"
 input_markdown_path="$2"
 tmp_html_path=`tempfile -s .html`
