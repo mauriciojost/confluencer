@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+curr_dir=$(readlink -e `dirname $0`)
+
 set -e
 #set -x
 set -u
@@ -11,4 +13,4 @@ tmp_html_path=`tempfile -s .html`
 echo "md($input_markdown_path) -> html($tmp_html_path)..."
 pandoc -f markdown -t html "$input_markdown_path" -o "$tmp_html_path"
 
-./html_to_confluence "$confluence_page_title" "$tmp_html_path"
+$curr_dir/html_to_confluence "$confluence_page_title" "$tmp_html_path"

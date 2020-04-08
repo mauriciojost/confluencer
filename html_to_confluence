@@ -1,21 +1,25 @@
 #!/usr/bin/env bash
 
+curr_dir=$(readlink -e `dirname $0`)
 
 set -e
 #set -x
 set -u
 
 
+source $curr_dir/settings.conf
 
 confluence_page_title="$1"
 input_html_path="$2"
 tmp_json_path=`tempfile -s .confluence.json`
 
 echo "html($input_html_path) -> json($tmp_json_path)..."
-python html_to_confluence_json.py "$confluence_space" "$input_html_path" "$confluence_page_title" "$confluence_page_ancestor" > "$tmp_json_path"
+python $curr_dir/html_to_confluence_json.py "$confluence_space" "$input_html_path" "$confluence_page_title" "$confluence_page_ancestor" > "$tmp_json_path"
 
 echo "Publishing json($tmp_json_path)..."
-curl -v -u "$confluence_user" -X POST -H 'Content-Type: application/json' --data-binary "@$tmp_json_path" "$confluence_url"
-
-echo "Done."
+curl -u "$confluence_user" -X POST -H 'Content-Type: application/json' --data-binary "@$tmp_json_path" "$confluence_url/rest/api/content/"
+ 
+echo ""
+echo ""
+echo "See: $confluence_url/pages/viewpage.action?pageId=$confluence_page_ancestor"
 
