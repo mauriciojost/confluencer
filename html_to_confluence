@@ -21,5 +21,6 @@ curl -u "$confluence_user" -X POST -H 'Content-Type: application/json' --data-bi
  
 echo ""
 echo ""
-echo "See: $confluence_url/pages/viewpage.action?pageId=$confluence_page_ancestor"
+echo "Parent: $confluence_url/pages/viewpage.action?pageId=$confluence_page_ancestor"
+echo "Page  : $confluence_url/display/$confluence_space/$confluence_page_title"
 
