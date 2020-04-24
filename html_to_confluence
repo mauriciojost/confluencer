@@ -7,7 +7,12 @@ set -e
 set -u
 
 
-source $curr_dir/settings.conf
+if [ -e $HOME/.confluencer.conf ]
+then
+  source $HOME/.confluencer.conf 
+else 
+  source $curr_dir/settings.conf
+fi
 
 confluence_page_title="$1"
 input_html_path="$2"
