@@ -11,7 +11,7 @@ if [ -e $HOME/.confluencer.conf ]
 then
   source $HOME/.confluencer.conf 
 else 
-  source $curr_dir/settings.conf
+  source $curr_dir/confluencer.conf
 fi
 
 confluence_page_title="$1"

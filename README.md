@@ -6,7 +6,7 @@ Transform documentation into confluence pages.
 
 You will need to install `pandoc` tool.
 
-Set up your settings in `settings.conf`.
+Set up your settings in `$HOME/.confluencer.conf` or `confluencer.conf`.
 
 Then execute:
 
