@@ -12,6 +12,6 @@ tmp_html_path=`tempfile -s .html`
 
 echo "md($input_markdown_path) -> html($tmp_html_path)..."
 
-pandoc -s --highlight-style zenburn -t html "$input_markdown_path" -o "$tmp_html_path"
+pandoc -s -t html "$input_markdown_path" -o "$tmp_html_path"
 
 $curr_dir/html_to_confluence "$confluence_page_title" "$tmp_html_path"
