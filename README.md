@@ -1,6 +1,10 @@
 # README
 
-Transform documentation into confluence pages.
+**NOT MAINTAINED**
+
+Better use `md_to_conf` which does this and better.
+
+This project transforms documentation in markdown format into confluence pages.
 
 ## Get started
 
